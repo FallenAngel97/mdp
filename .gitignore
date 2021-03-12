@@ -1,0 +1,8 @@
+__pycache__
+.vagrant
+.vscode
+env
+.known_machines
+**/*.glade~
+.env/
+.venv/

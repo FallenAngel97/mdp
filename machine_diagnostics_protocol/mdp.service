@@ -1,0 +1,14 @@
+[Unit]
+Description=MDP python implementation
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=vagrant
+Restart=always
+ExecStartPre=/bin/mkdir -p /var/run/mdp_protocol
+PIDFile=/var/run/mdp_protocol/service.pid
+ExecStart=/usr/bin/python3 /home/vagrant/mdp_base.py
+
+[Install]
+WantedBy=multi-user.target
