@@ -1,7 +1,10 @@
+# 🩺 Machine Diagnostics Protocol MDP
+
 Currently supported remote OS:
 Ubuntu 14.04+
 
 # Structure of MDP protocol
+![Diagram](docs/mdp_initialization.png)
 
 - The machine needs SSH opened(or some kind to transfer all files)
 - Upon the ssh establishment, script installs necessary dependencies (python, pip, etc)
@@ -13,16 +16,17 @@ Ubuntu 14.04+
 - After the processing it sends it over UDP to the monitoring host over time
 <table><thead><tr>
 <td>
-From master to slave
+From controlling machine to controlled
 </td>
 <td>
-From slave to master
+From controlled machine to controlling
 </td>
 </tr></thead><tr><td>
 
 ```json
 {
   "key": <key>,
+  "version": "1.0",
   "operations": [],
   "cluster_info": {
 
@@ -35,6 +39,7 @@ From slave to master
 ```json
 {
     "status": true|false,
+    "version": "1.0",
     "operations": [],
     "cluster_info": {
 
@@ -94,3 +99,8 @@ Answer from the machine will look like this:
 As the minimum Ubuntu version is 14.04, the default python interpreter is 3.4.3 in that distribution. Therefore, keep in mind to use the syntax, applicable for 3.4 and lower for remote scripts and avoid anything incompatible as `f-strings`, which are the new thing, starting from 3.6
 
 If you are getting errors like "no module named <modulename>", it may be cause by mismatch between your virtual environment and working environment. Then you can try to recreate the virtual environemnt by deleting your folder with virtual environemnt and re-installing all pip packages in that folder
+
+# Legacy notes
+
+Icons used in the diagram are from [Flaticons](https://flaticon.com) and are licensed by their respective owners, 
+presented here only for demonstration purposes
