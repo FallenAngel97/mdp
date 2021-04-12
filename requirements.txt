@@ -5,3 +5,4 @@ pycairo
 PyGObject
 fabric
 matplotlib
+psutil
